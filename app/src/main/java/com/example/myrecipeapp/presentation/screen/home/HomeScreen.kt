@@ -1,12 +1,17 @@
 package com.example.myrecipeapp.presentation.screen.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -21,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.R
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myrecipeapp.presentation.viewmodels.HomeViewModel
+import com.example.myrecipeapp.ui.theme.CustomGray
 import com.example.myrecipeapp.ui.theme.CustomRed
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -71,8 +77,29 @@ fun HomeScreen(
                             onClick = {viewModel.fetchRecipes()},
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 24.dp)
-                        ) { }
+                                .padding(horizontal = 24.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                contentColor = CustomGray,
+                                containerColor = Color.White
+                            )
+                        ) {
+                            Text(
+                                "Retry",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
+                }
+                else ->{
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        contentPadding = PaddingValues(12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+
+                    ) {
+
+
                     }
                 }
             }
