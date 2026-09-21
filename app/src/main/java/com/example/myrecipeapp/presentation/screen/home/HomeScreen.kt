@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.R
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myrecipeapp.presentation.viewmodels.HomeViewModel
 import com.example.myrecipeapp.ui.theme.CustomGray
