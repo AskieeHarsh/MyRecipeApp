@@ -11,18 +11,20 @@ import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
-class RecipeAPIService (private val client : HttpClient) {
 
-    suspend fun getAllRecipes(): RecipeResponse{
-        return client.get(urlString = "${KtorClient.BASE_URL}recipe").body()
+class RecipeAPIService(private val client: HttpClient){
+    suspend fun getAllRecipes() : RecipeResponse {
+        return client.get(urlString = "${KtorClient.BASE_URL}recipes").body()
     }
-    suspend fun getRecipeById(id: Int): RecipeDTO{
-        return client.get(urlString = "${KtorClient.BASE_URL}recipe/$id").body()
+    suspend fun getRecipeById(id : Int) : RecipeDTO {
+        return client.get(urlString = "${KtorClient.BASE_URL}recipes/$id").body()
+
     }
     suspend fun addRecipe(request: AddRecipeRequest){
-        client.post(urlString = "${KtorClient.BASE_URL}recipe/add"){
-            contentType(ContentType.Application.Json)
-            setBody(request)
+         client.post(urlString = "${KtorClient.BASE_URL}recipes/add"){
+
+             contentType(ContentType.Application.Json)
+             setBody(request)
         }
     }
 }
