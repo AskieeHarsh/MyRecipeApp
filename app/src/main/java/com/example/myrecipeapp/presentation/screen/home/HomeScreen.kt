@@ -9,7 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -94,11 +97,30 @@ fun HomeScreen(
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(2),
                         contentPadding = PaddingValues(12.dp),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
 
                     ) {
 
+                        item( span = { GridItemSpan(currentLineSpan = maxLineSpan)}) {
+                            HomeHeader()
+                        }
+                        if (viewModel.categories.size > 1){
+                            item(span = { GridItemSpan(currentLineSpan = maxLineSpan)}){
+                                CategorySection(
+                                    categories = viewModel.categories,
+                                    selected = viewModel.selectCategory,
+                                    onSelected = viewModel :: onCategorySelected
+                                )
+                            }
+                        }
+                        item(span = { GridItemSpan(currentLineSpan = maxLineSpan)} ) {
+                            SectionHeader(
+                                title = if (viewModel.selectCategory == "All") "All Recipes" else viewModel.selectCategory,
+                                icon = Icons.Default.Menu
+                            )
 
+                        }
                     }
                 }
             }

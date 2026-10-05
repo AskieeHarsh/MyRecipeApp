@@ -35,7 +35,8 @@ fun HomeHeader(){
             .fillMaxWidth()
             .clip(RoundedCornerShape(20.dp))
             .background(color = CustomColour.copy(alpha = 0.1f))
-            .padding(16.dp)
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
 
         Box(
@@ -63,8 +64,12 @@ fun HomeHeader(){
                 fontSize = 20.sp,
                 fontWeight = FontWeight.SemiBold
             )
+
+            Spacer(modifier = Modifier.width(16.dp))
+
             Text(
-                text = "Find something delicious to cook"
+                text = "Find something delicious to cook",
+                color = Color.Gray
             )
         }
     }
