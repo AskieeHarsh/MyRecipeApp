@@ -11,8 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MenuOpen
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,7 +28,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myrecipeapp.presentation.components.LoadingIndicator
 import com.example.myrecipeapp.presentation.viewmodels.HomeViewModel
+import com.example.myrecipeapp.ui.theme.CustomColour
 import com.example.myrecipeapp.ui.theme.CustomGray
 import com.example.myrecipeapp.ui.theme.CustomRed
 
@@ -60,7 +63,7 @@ fun HomeScreen(
                 .padding(innerPadding)
         ){
             when {
-                viewModel.isLoading -> LoadingIndicator()
+                viewModel.isLoading -> LoadingIndicator(strokeWidth = 1.dp)
                 viewModel.errorMessage != null->{
 
                     Box(
@@ -117,9 +120,30 @@ fun HomeScreen(
                         item(span = { GridItemSpan(currentLineSpan = maxLineSpan)} ) {
                             SectionHeader(
                                 title = if (viewModel.selectCategory == "All") "All Recipes" else viewModel.selectCategory,
-                                icon = Icons.Default.Menu
+                                icon = Icons.Default.MenuOpen
                             )
 
+                        }
+
+                        if (viewModel.recipes.isEmpty()){
+                            item(span = {GridItemSpan(currentLineSpan = maxLineSpan)}){
+                                Box(
+                                    modifier = Modifier.fillMaxWidth()
+                                        .padding(vertical = 48.dp),
+                                    contentAlignment = Alignment.Center
+                                ){
+                                    Text(
+                                        text = "No Recipe Found",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = CustomColour
+                                    )
+                                }
+                            }
+                        }else{
+                            items(viewModel.recipes , key = {it.id} ) { recipe->
+
+                            }
                         }
                     }
                 }
