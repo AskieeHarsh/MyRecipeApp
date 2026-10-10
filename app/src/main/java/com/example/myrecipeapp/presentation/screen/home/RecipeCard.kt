@@ -75,7 +75,7 @@ fun RecipeCard(
 
                 Text(
                     text = recipe.name,
-                    fontSize = 20.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -89,6 +89,7 @@ fun RecipeCard(
                     Text(
                         text = recipe.cuisine,
                         color = Color.Gray,
+                        fontSize = 12.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.weight(1f)

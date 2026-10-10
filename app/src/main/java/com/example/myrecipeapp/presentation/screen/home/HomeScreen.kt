@@ -143,6 +143,14 @@ fun HomeScreen(
                         }else{
                             items(viewModel.recipes , key = {it.id} ) { recipe->
 
+                                RecipeCard(
+                                    recipe = recipe,
+                                    onClick = {
+                                        onRecipeClick(recipe.id)
+
+                                    }
+                                )
+
                             }
                         }
                     }
