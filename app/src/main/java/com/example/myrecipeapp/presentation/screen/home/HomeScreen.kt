@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myrecipeapp.presentation.components.ErrorMessage
 import com.example.myrecipeapp.presentation.components.LoadingIndicator
 import com.example.myrecipeapp.presentation.viewmodels.HomeViewModel
 import com.example.myrecipeapp.ui.theme.CustomColour
@@ -64,38 +65,12 @@ fun HomeScreen(
         ){
             when {
                 viewModel.isLoading -> LoadingIndicator(strokeWidth = 1.dp)
-                viewModel.errorMessage != null->{
+                viewModel.errorMessage != null-> ErrorMessage(
+                    errorMessage = viewModel.errorMessage,
+                    onRetry = {viewModel.fetchRecipes()}
+                )
 
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ){
-                        Text(
-                            text = viewModel.errorMessage ?:"",
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Red
-                        )
-                        Spacer(modifier = Modifier.height(24.dp))
 
-                        Button(
-                            onClick = {viewModel.fetchRecipes()},
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 24.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                contentColor = CustomGray,
-                                containerColor = Color.White
-                            )
-                        ) {
-                            Text(
-                                "Retry",
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
-                    }
-                }
                 else ->{
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(2),
