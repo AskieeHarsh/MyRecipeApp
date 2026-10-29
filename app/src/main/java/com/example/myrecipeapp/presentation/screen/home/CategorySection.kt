@@ -1,7 +1,7 @@
 package com.example.myrecipeapp.presentation.screen.home
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyRow
@@ -24,41 +24,43 @@ fun CategorySection(
     categories : List<String>,
     selected : String,
     onSelected: (String)-> Unit
-){
+) {
 
-    SectionHeader(
-        title = "Categories",
-        icon = Icons.Default.Restaurant
-    )
+    Column() {
+        SectionHeader(
+            title = "Categories",
+            icon = Icons.Default.Restaurant,
+        )
 
-    Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-    LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(categories){category ->
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(categories) { category ->
 
-            val isSelected = selected == category
-            FilterChip(
-                selected = isSelected,
-                onClick = {onSelected(category)},
-                label = {
-                    Text(
-                        text = category,
-                        fontWeight = if(isSelected) FontWeight.SemiBold else FontWeight.Normal
-                    )
-                },
-                shape = RoundedCornerShape(size = 16.dp),
-                colors = FilterChipDefaults.filterChipColors(
-                    selectedLabelColor = Color.White,
-                    selectedContainerColor = CustomColour,
-                    labelColor = Color.DarkGray,
-                    containerColor = Color.White
-                ),
-                border = null
-            )
+                val isSelected = selected == category
+                FilterChip(
+                    selected = isSelected,
+                    onClick = { onSelected(category) },
+                    label = {
+                        Text(
+                            text = category,
+                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
+                        )
+                    },
+                    shape = RoundedCornerShape(size = 16.dp),
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedLabelColor = Color.White,
+                        selectedContainerColor = CustomColour,
+                        labelColor = Color.DarkGray,
+                        containerColor = Color.White
+                    ),
+                    border = null
+                )
 
+            }
         }
-    }
 
+    }
 }
