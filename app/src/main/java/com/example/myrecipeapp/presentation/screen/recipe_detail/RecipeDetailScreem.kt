@@ -3,16 +3,12 @@ package com.example.myrecipeapp.presentation.screen.recipe_detail
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -56,9 +52,9 @@ fun RecipeDetailScreen(
                     errorMessage = viewModel.errorMessage,
                     onRetry = {viewModel.fetchRecipeDetail(id = recipeId)}
                 )
-
-
-
+                    viewModel.recipe != null->{
+                        RecipeDetailContent(details = viewModel.recipe!!)
+                    }
             }
 
         }
