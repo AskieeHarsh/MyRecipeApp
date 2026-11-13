@@ -30,6 +30,7 @@ import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.Whatshot
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,7 +52,8 @@ fun RecipeDetailContent(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp)
+            .background(color = CustomRed.copy(alpha = 0.02f)),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         AsyncImage(
@@ -59,30 +61,32 @@ fun RecipeDetailContent(
             contentDescription = details.name,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(220.dp)
+                .height(180.dp)
                 .clip(RoundedCornerShape(24.dp)),
             contentScale = ContentScale.Crop
         )
         DetailSection(title = "Recipe Details", icon = Icons.Default.RemoveRedEye) {
             Text(
                 text = details.name,
-                fontSize = 16.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.DarkGray
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(4.dp))
             Row(
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.Center
             ) {
                 InfoChip(
                     label = details.cuisine,
                     icon = Icons.Default.Public
                 )
+                Spacer(modifier = Modifier.width(12.dp))
                 InfoChip(
                     label = details.difficulty,
                     icon = Icons.Default.Star
                 )
+                Spacer(modifier = Modifier.width(12.dp))
                 InfoChip(
                     label = details.mealType.firstOrNull() ?: "",
                     icon = Icons.Default.Bolt
@@ -101,7 +105,7 @@ fun RecipeDetailContent(
                     label = "Prep",
                     value = "${details.prepTimeMinutes}m"
                 )
-                HorizontalDivider(
+                VerticalDivider(
                     modifier = Modifier.height(32.dp),
                     thickness = 1.dp,
                     color = Color.Gray.copy(alpha = 0.2f)
@@ -111,7 +115,7 @@ fun RecipeDetailContent(
                     label = "Cook",
                     value = "${details.cookTimeMinutes}m"
                 )
-                HorizontalDivider(
+                VerticalDivider(
                     modifier = Modifier.height(32.dp),
                     thickness = 1.dp,
                     color = Color.Gray.copy(alpha = 0.2f)
@@ -121,7 +125,7 @@ fun RecipeDetailContent(
                     label = "Cal",
                     value = "${details.caloriesPerServing}"
                 )
-                HorizontalDivider(
+                VerticalDivider(
                     modifier = Modifier.height(32.dp),
                     thickness = 1.dp,
                     color = Color.Gray.copy(alpha = 0.2f)
@@ -185,8 +189,7 @@ fun RecipeDetailContent(
 
                     Text(
                         text = instructions,
-                        color = Color.DarkGray.copy(alpha = 0.85f),
-                        modifier = Modifier.padding(top = 4.dp)
+                        color = Color.DarkGray.copy(alpha = 0.85f)
                     )
                 }
             }
