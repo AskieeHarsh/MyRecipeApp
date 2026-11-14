@@ -1,43 +1,57 @@
-# MyRecipeApp 
+# MyRecipeApp 🍽️
 
-A simple recipe app built using Kotlin and Jetpack Compose.
+A recipe app I built using Kotlin and Jetpack Compose while learning Android development.
 
-I made this project while learning Android development. It lets users browse recipes, explore different cuisines, and view recipe details along with ingredients and cooking instructions.
+The app gets recipe data from the DummyJSON API and displays it on the home screen. Users can browse recipes, filter them by cuisine and tap on a recipe to see its full details, including ingredients and cooking instructions.
 
-### Features
-- Browse recipes
-- Filter recipes by cuisine
-- View recipe details
-- Display ingredients and instructions
-- Load recipe images
-- Navigate between screens
+## What the app can do
 
-### Tech Used
+- Show recipes in a grid.
+- Filter recipes by cuisine.
+- View details of a selected recipe.
+- See cooking time, preparation time, calories and servings.
+- View ingredients and cooking instructions.
+- Load recipe images from the internet.
+- Show loading and error states.
+
+## Technologies used
+
 - Kotlin
 - Jetpack Compose
-- MVVM
+- MVVM Architecture
 - ViewModel
 - Kotlin Coroutines
+- Ktor Client
+- Kotlin Serialization
 - Navigation Compose
 - Coil
 
-### What I Learned
+## API
 
-While making this app, I got to work with different Android concepts like:
+I used the [DummyJSON Recipes API](https://dummyjson.com/recipes) to get the recipe data.
 
-- Composable functions and Modifiers
-- MVVM architecture
-- ViewModel and UI state
-- Kotlin Coroutines
-- Navigation and passing arguments between screens
-- Loading images asynchronously
-- Fetching and filtering recipe data
-- Handling loading and error states
+- `/recipes` – Gets the list of recipes.
+- `/recipes/{id}` – Gets details of a particular recipe.
 
-### Resources
+## Things I learned
 
-I took help from YouTube tutorials and Google documentation during development. Whenever I came across something new, I tried to understand how it works and why it was needed in the project.
+This project gave me a chance to work with:
 
-This project helped me understand how different Android concepts work together in an actual application.
+- Jetpack Compose and its UI components.
+- ViewModel and state management.
+- MVVM and Repository Pattern.
+- Kotlin Coroutines.
+- Making API requests using Ktor.
+- Working with JSON data.
+- Navigation and passing recipe IDs between screens.
+- Loading images using Coil.
+- Filtering recipes by cuisine.
+- Handling loading and error states.
 
-Still learning and improving!
+## A little about the project
+
+I used YouTube tutorials and Google documentation while working on this project. There were quite a few concepts that were new to me, so I spent time understanding how they work and why they are used.
+
+Building this app helped me get a better idea of how all these concepts come together in an actual Android application.
+
+I'm still learning, and this is one of the projects I've built along the way.
