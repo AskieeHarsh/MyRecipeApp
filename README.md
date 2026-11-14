@@ -48,6 +48,18 @@ This project gave me a chance to work with:
 - Filtering recipes by cuisine.
 - Handling loading and error states.
 
+## Download
+
+Want to try the app?
+
+1. Go to the [Latest Release](https://github.com/AskieeHarsh/MyRecipeApp/releases/latest).
+2. Download the APK from the **Assets** section.
+3. Open the downloaded APK and install it on your Android device.
+
+[⬇️ Download MyRecipeApp](https://github.com/AskieeHarsh/MyRecipeApp/releases/download/v1.0.0/MyRecipeApp.v1.0.0.apk)
+
+
+
 ## A little about the project
 
 I used YouTube tutorials and Google documentation while working on this project. There were quite a few concepts that were new to me, so I spent time understanding how they work and why they are used.
